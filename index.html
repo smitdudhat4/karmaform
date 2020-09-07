@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Form</title>
+	<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container"><br>
+	<h1 class="text-warning text-center"> -: Fill This Form For Your Online Exam :- </h1>
+	<div class="col-lg-6 m-auto d-block"><hr><br>
+		<form action="#" onsubmit="return validation()" class="bg-light">
+			<!--username-->
+			<div class="form-group text-secondary">
+				<label> Username: </label>
+				<input type="text" name="username" class="form-control" id="username" autocomplete="off">
+				<span id="user" class="text-danger"></span>
+			</div>	
+
+			<!---password--->
+			<div class="form-group text-secondary">
+				<label> Password: </label>
+				<input type="text" name="password" class="form-control" id="password" autocomplete="off">
+				<span id="pass" class="text-danger"></span>
+			</div>
+
+			<!---confirm password--->
+			<div class="form-group text-secondary">
+				<label> Confirm Password: </label>
+				<input type="password" name="cpassword" class="form-control" id="cpassword" autocomplete="off">
+				<span id="cpass" class="text-danger"></span>
+			</div>	
+
+			<!---mobile number--->
+			<div class="form-group text-secondary">
+				<label> Mobile no: </label>
+				<input type="text" name="mno" class="form-control" id="mno" autocomplete="off">
+				<span id="mo" class="text-danger"></span>
+			</div>	
+
+			<!---Email id-->
+			<div class="form-group text-secondary">
+				<label> Email id: </label>
+				<input type="text" name="email" class="form-control" id="email" autocomplete="off">
+				<span id="id" class="text-danger"></span>
+			</div>	
+
+			<!---submit-->
+			<input type="submit" name="submit" value="Submit" class="btn btn-warning text-light" autocomplete="off">
+		</form>		
+	</div>
+</div>
+
+<script type="text/javascript">
+	
+	function validation() {
+		
+		/* username */
+		var username = document.getElementById('username').value;
+		if(username == '')
+		{
+			document.getElementById('user').innerHTML = 'Please Fill username';
+			return false;
+		}
+		else if ((username.length <= 1) && (username.length > 20)) {
+
+			document.getElementById('user').innerHTML = 'Please Enter 2 to 20 between word username';
+			return false;
+		}
+		else if(!isNaN(username))
+		{
+			document.getElementById('user').innerHTML = 'Do not write number';
+			return false;
+		}
+
+		/* password */
+		var password = document.getElementById('password').value;
+		if(password == '')
+		{
+			document.getElementById('pass').innerHTML = 'Please Fill Password';
+			return false;
+		}
+		else if (password.length < 8) {
+
+			document.getElementById('pass').innerHTML = 'Enter 8 character Password';
+			return false;
+		}
+
+		/* confirm password */
+		var cpassword = document.getElementById('cpassword').value;
+		if(cpassword == '')
+		{
+			document.getElementById('cpass').innerHTML = 'Please Fill Confirm Password';
+			return false;
+		}
+		else if (password != cpassword) {
+			document.getElementById('cpass').innerHTML = 'Password is not match! Please Enter right Password';
+			return false;
+		}
+
+		/* mobile no */
+		var mno = document.getElementById('mno').value;
+		if(mno == '')
+		{
+			document.getElementById('mo').innerHTML = 'Please Fill Mobile no.';
+			return false;
+		}
+		else if ((isNaN(mno)) && (mno.length == 10)) {
+			document.getElementById('mo').innerHTML = 'Only write 10 digit you can not write character';
+			return false;
+		}
+
+		/* email */
+		var email = document.getElementById('email').value;
+		if(email == '')
+		{
+			document.getElementById('id').innerHTML = 'Please Fill Email Address';
+			return false;
+		}
+		else if(email.indexOf('@') <= 0)
+		{
+			document.getElementById('id').innerHTML = 'Do not @ start with 0 position';
+			return false;
+		}
+		else if((email.charAt(email.length-4)!='.') && (email.charAt(email.length-3)!='.'))
+		{
+			document.getElementById('id').innerHTML = 'Invalid . position';
+			return false;
+		}
+	}
+</script>
+</body>
+</html> 
